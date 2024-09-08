@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# تابع برای تولید شماره IPv4 تصادفی
+generate_ipv4() {
+    printf "%d.%d.%d.%d\n" $(($RANDOM % 256)) $(($RANDOM % 256)) $(($RANDOM % 256)) $(($RANDOM % 256))
+}
+
+# تابع برای تولید شماره IPv6 تصادفی
+generate_ipv6() {
+    printf "%x:%x:%x:%x:%x:%x:%x:%x\n" \
+        $(($RANDOM % 65536)) $(($RANDOM % 65536)) \
+        $(($RANDOM % 65536)) $(($RANDOM % 65536)) \
+        $(($RANDOM % 65536)) $(($RANDOM % 65536)) \
+        $(($RANDOM % 65536)) $(($RANDOM % 65536))
+}
+
+# تولید و نمایش شماره‌های IP
+for country in "USA" "UK" "Canada" "Germany" "France" "Australia"; do
+    echo "Country: $country"
+    echo "IPv4: $(generate_ipv4)"
+    echo "IPv6: $(generate_ipv6)"
+    echo ""
+done

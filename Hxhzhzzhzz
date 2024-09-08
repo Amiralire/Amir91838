@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# اسم شما
+echo "Name: V84"
+
+# کشورها
+countries=("JP" "DE" "IQ" "EG" "AE")
+
+# تابع برای دریافت اطلاعات IP
+get_ip_info() {
+    local country_code=$1
+    echo "Fetching IP for country: $country_code"
+    curl -s ipinfo.io/${country_code} | grep "ip"
+}
+
+# دریافت IP برای هر کشور
+for country in "${countries[@]}"; do
+    get_ip_info $country
+done
